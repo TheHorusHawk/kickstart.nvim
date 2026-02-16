@@ -73,7 +73,7 @@ Kickstart Guide:
    NOTE: Look for lines like this
 
     Throughout the file. These are for you, the reader, to help you understand what is happening.
-    Feel free to delete them once you know what you're doing, but they should serve as a guide
+    Feel free to delete the https://learnxinyminutes.com/docs/lua/m once you know what you're doing, but they should serve as a guide
     for when you are first encountering a few different constructs in your Neovim config.
 
 If you experience any errors while trying to install kickstart, run `:checkhealth` for more info.
@@ -102,7 +102,7 @@ vim.g.have_nerd_font = true
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
