@@ -147,9 +147,9 @@ vim.o.breakindent = true
 -- Save undo history
 vim.o.undofile = true
 
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term - removed all of that
 vim.o.ignorecase = false
-vim.o.smartcase = true
+vim.o.smartcase = false
 
 -- Keep signcolumn on by default
 vim.o.signcolumn = 'yes'
