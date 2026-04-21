@@ -21,6 +21,7 @@
 =====================================================================
 
 What is Kickstart?
+
   Kickstart.nvim is *not* a distribution.
 
   Kickstart.nvim is a starting point for your own configuration.
@@ -72,7 +73,7 @@ Kickstart Guide:
    NOTE: Look for lines like this
 
     Throughout the file. These are for you, the reader, to help you understand what is happening.
-    Feel free to delete the https://learnxinyminutes.com/docs/lua/m once you know what you're doing, but they should serve as a guide
+    Feel free to delete them once you know what you're doing, but they should serve as a guide
     for when you are first encountering a few different constructs in your Neovim config.
 
 If you experience any errors while trying to install kickstart, run `:checkhealth` for more info.
