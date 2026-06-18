@@ -32,3 +32,14 @@ function JS_console_log_type_from_yank_register()
   vim.api.nvim_buf_set_lines(0, currentLineNumber, currentLineNumber, true, { newline })
 end
 vim.api.nvim_set_keymap('n', '<M-t>', '<cmd>lua JS_console_log_type_from_yank_register()<cr>', {})
+
+function JSX_paste_prop_with_same_name_as_yank_register()
+  local yankRegister = vim.fn.getreg '0'
+  local yankRegisterNoNewLines = string.gsub(yankRegister, '\n', '')
+  local newline = '' .. yankRegisterNoNewLines .. '={' .. yankRegisterNoNewLines .. '}'
+  vim.api.nvim_paste(newline, false, -1)
+  -- local currentLineNumber = unpack(vim.api.nvim_win_get_cursor(0))
+  -- vim.api.nvim_buf_set_lines(0, currentLineNumber, currentLineNumber, true, { newline })
+end
+
+vim.api.nvim_set_keymap('n', '<M-;>', '<cmd>lua JSX_paste_prop_with_same_name_as_yank_register()<cr>', {})
