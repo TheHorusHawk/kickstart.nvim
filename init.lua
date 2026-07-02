@@ -43,18 +43,8 @@ What is Kickstart?
 
 Kickstart Guide:
 
-  TODO: The very first thing you should do is to run the command `:Tutor` in Neovim.
-
-    If you don't know what this means, type the following:
-      - <escape key>
-      - :
-      - Tutor
-      - <enter key>
-
-    (If you already know the Neovim basics, you can skip this step.)
-
-  Once you've completed that, you can continue working through **AND READING** the rest
-  of the kickstart init.lua.
+-- TODO: line 118 Need way to toggle ignorecase in telescope searches \c does not seem to work until then, must use ignorecase and smartcase
+--TODO: when not on file, show branch of pwd
 
   Next, run AND READ `:help`.
     This will open up a help window with some basic information
@@ -118,29 +108,6 @@ vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
 
--- if vim.fn.has 'wsl' == 1 then
---   if vim.fn.executable 'wl-copy' == 0 then
---     print "wl-clipboard not found, clipboard integration won't work"
---   else
---     vim.g.clipboard = {
---       name = 'wl-clipboard (wsl)',
---       copy = {
---         ['+'] = 'wl-copy --foreground --type text/plain',
---         ['*'] = 'wl-copy --foreground --primary --type text/plain',
---       },
---       paste = {
---         ['+'] = function()
---           return vim.fn.systemlist('wl-paste --no-newline|sed -e "s/\r$//"', { '' }, 1) -- '1' keeps empty lines
---         end,
---         ['*'] = function()
---           return vim.fn.systemlist('wl-paste --primary --no-newline|sed -e "s/\r$//"', { '' }, 1)
---         end,
---       },
---       cache_enabled = true,
---     }
---   end
--- end
---
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -148,9 +115,8 @@ vim.o.breakindent = true
 vim.o.undofile = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term - removed all of that
-vim.o.ignorecase = false
-vim.o.smartcase = false
-
+vim.o.ignorecase = true
+vim.o.smartcase = true
 -- Keep signcolumn on by default
 vim.o.signcolumn = 'yes'
 
@@ -207,12 +173,13 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- TIP: Disable arrow keys in normal mode
+-- Disable arrow keys in normal mode
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+
 --on up write : on command bar
 vim.keymap.set('n', '<up>', '<:')
-vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -262,8 +229,6 @@ rtp:prepend(lazypath)
 --
 --  To check the current status of your plugins, run
 --    :Lazy
---
---  You can press `?` in this menu for help. Use `:q` to close the window
 --
 --  To update plugins you can run
 --    :Lazy update
