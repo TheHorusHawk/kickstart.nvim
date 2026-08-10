@@ -1045,6 +1045,12 @@ vim.fn.sign_define('DiagnosticSignWarn', { text = ' ', texthl = 'DiagnosticSi
 vim.fn.sign_define('DiagnosticSignInfo', { text = ' ', texthl = 'DiagnosticSignInfo' })
 vim.fn.sign_define('DiagnosticSignHint', { text = '󰌵', texthl = 'DiagnosticSignHint' })
 
+local map = vim.keymap.set
+
+map('i', 'jk', '<ESC>')
+map('t', 'jk', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+map('v', 'jkjk', '<C-\\><C-n>', { desc = 'Exit visual mode' })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 e..
 vim.env.BASH_ENV = '~/.bash_aliases'
