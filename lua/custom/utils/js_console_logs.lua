@@ -6,7 +6,6 @@ function JS_console_log_blank()
   vim.api.nvim_input 'ci"'
 end
 vim.api.nvim_set_keymap('n', '<M-b>', '<cmd>lua JS_console_log_blank()<cr>', {})
--- TODO - place the cursor at the "" in the console.log
 
 function JS_console_log_from_yank_register()
   local yankRegister = vim.fn.getreg '0'

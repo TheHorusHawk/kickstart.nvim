@@ -77,8 +77,8 @@ return {
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
       },
     }
-    -- vim.cmd.colorscheme 'catppuccin-nvim'
-    vim.cmd.colorscheme 'tokyonight-moon'
+    vim.cmd.colorscheme 'catppuccin-nvim'
+    -- vim.cmd.colorscheme 'tokyonight-moon'
     -- You can configure highlights by doing something like:
     vim.cmd.hi 'Comment gui=none'
   end,
