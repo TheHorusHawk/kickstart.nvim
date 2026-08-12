@@ -1047,7 +1047,7 @@ vim.fn.sign_define('DiagnosticSignHint', { text = '󰌵', texthl = 'DiagnosticSi
 
 local map = vim.keymap.set
 
-map('i', 'jk', '<ESC>')
+map({ 'i', 'c' }, 'jk', '<ESC>')
 map('t', 'jk', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 map('v', 'jkjk', '<C-\\><C-n>', { desc = 'Exit visual mode' })
 
