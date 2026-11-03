@@ -45,6 +45,8 @@ Kickstart Guide:
 
 -- TODO: line 118 Need way to toggle ignorecase in telescope searches \c does not seem to work until then, must use ignorecase and smartcase
 --TODO: when not on file, show branch of pwd
+--TODO: tsx comments
+--TODO: bash_aliases integration
 
   Next, run AND READ `:help`.
     This will open up a help window with some basic information
@@ -966,11 +968,13 @@ require('lazy').setup({
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    lazy = false,
     build = ':TSUpdate',
-    main = 'nvim-treesitter', -- Sets main module to use for opts
+    version = 'main',
+    -- main = 'nvim-treesitter', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'rust', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -1003,7 +1007,6 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -1054,3 +1057,11 @@ map('v', 'jkjk', '<C-\\><C-n>', { desc = 'Exit visual mode' })
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 e..
 vim.env.BASH_ENV = '~/.bash_aliases'
+
+-- tsx-jsx integration as
+local get_option = vim.filetype.get_option
+vim.filetype.get_option = function(filetype, option)
+  return option == 'commentstring' and require('ts_context_commentstring.internal').calculate_commentstring() or get_option(filetype, option)
+end
+
+vim.opt.winbar = '%=%b %f'
